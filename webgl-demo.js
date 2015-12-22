@@ -28,6 +28,20 @@ var videoElement;
 function start() {
   canvas = document.getElementById("glcanvas");
 
+  // canvas.style.width = window.innerWidth + "px";
+  // canvas.style.height = window.innerHeight + "px";
+  var displayWidth  = canvas.clientWidth;
+  var displayHeight = canvas.clientHeight;
+
+  // Check if the canvas is not the same size.
+  if (canvas.width  != displayWidth ||
+      canvas.height != displayHeight) {
+
+    // Make the canvas the same size
+    canvas.width  = displayWidth;
+    canvas.height = displayHeight;
+  }
+
   videoElement = document.getElementById("video");
 
   // videoElement.oncanplay = function() {
