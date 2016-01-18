@@ -55,13 +55,15 @@
   </head>
 
   <body onload="start()">
-    <!-- <canvas id="glcanvas" width="640" height="480"> -->
-      <canvas id="glcanvas" width="100vw" height="100vh">
+    <canvas id="glcanvas" width="640" height="480">
+      <!-- <canvas id="glcanvas" width="100vw" height="100vh"> -->
 
       Your browser doesn't appear to support the <code>&lt;canvas&gt;</code> element.
     </canvas>
     <!-- <video id="video" src="Firefox.ogv" autoplay muted> -->
-      <video id="video" src="1450504231111.webm" autoplay muted>
+      <!-- <video id="video" src="1450504231111.webm" crossorigin="use-credentials" autoplay> -->
+        <video id="video" src="1450760523619.webm" crossOrigin="anonymous" poster="testpattern.jpg" loop="true" muted="false"  autoplay>
+        <!-- <video id="video" src="http://i.4cdn.org/wsg/1452996306625.webm" crossOrigin="anonymous" poster="testpattern.jpg" loop="true" muted="false" autoplay> -->
       Your browser doesn't appear to support the <code>&lt;video&gt;</code> element.
     </video>
   </body>

@@ -1,6 +1,6 @@
 var canvas;
 var gl;
-var intervalID;
+var intervalID = -1;
 
 var cubeVerticesBuffer;
 var cubeVerticesTextureCoordBuffer;
@@ -75,12 +75,20 @@ function start() {
     // Start listening for the canplaythrough event, so we don't
     // start playing the video until we can do so without stuttering
 
-    videoElement.addEventListener("canplaythrough", startVideo, true);
+    if(videoElement) {
+      videoElement.addEventListener("canplaythrough", startVideo, true);
 
-    // Start listening for the ended event, so we can stop the
-    // animation when the video is finished playing.
+      // Start listening for the ended event, so we can stop the
+      // animation when the video is finished playing.
 
-    videoElement.addEventListener("ended", videoDone, true);
+      //videoElement.addEventListener("ended", videoDone, true);
+
+      videoElement.addEventListener('loadedmetadata', function(e){
+        var dimensions = [video.videoWidth, video.videoHeight];
+        //alert(dimensions);
+        console.log("Video loaded metadata: width = " , dimensions[0] , " h = " , dimensions[1])
+    });
+    }
   }
 }
 
@@ -319,9 +327,12 @@ function updateTexture() {
 // as our texture.
 //
 function startVideo() {
+  if(intervalID >= 0) {
+    return;
+  }
   console.log("StartVideo invoked via canplaythrough");
   videoElement.play();
-  videoElement.muted = true;
+  //videoElement.muted = true;
   intervalID = setInterval(drawScene, 15);
 }
 
